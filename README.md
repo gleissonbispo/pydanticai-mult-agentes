@@ -18,7 +18,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  🤖 Atendimento Multi-Agente                        │
+│  *Atendimento Multi-Agente*                         │
 │                                                     │
 │  Cliente: Não consigo acessar minha conta           │
 │                                                     │
@@ -35,39 +35,46 @@
 └─────────────────────────────────────────────────────┘
 ```
 
-> Screenshots e GIF da interface Streamlit em `docs/demo/` (adicione após rodar localmente)
+### 🤖 Agente Financeiro
+![Agente Financeiro](docs/demo/agente_financeiro.gif)
+
+### 🔧 Agente Técnico
+![Agente Técnico](docs/demo/agente_tecnico.gif)
+
+### 💼 Agente de Vendas
+![Agente de Vendas](docs/demo/agente_vendas.gif)
 
 ---
 
 ## Arquitetura
 
 ```
-┌──────────────┐   WebSocket    ┌─────────────────────────────────────────┐
-│   Streamlit  │◄──────────────►│              FastAPI Backend             │
-│   Frontend   │                │                                         │
-└──────────────┘                │  ┌─────────────────────────────────┐    │
-                                │  │        Orquestrador              │    │
-                                │  │  (classifica intenção e delega)  │    │
-                                │  └──────┬──────────┬────────────┘    │
+┌──────────────┐   WebSocket    ┌───────────────────────────────────────┐
+│   Streamlit  │◄──────────────►│              FastAPI Backend          │
+│   Frontend   │                │                                       │
+└──────────────┘                │  ┌─────────────────────────────────┐  │
+                                │  │        Orquestrador             │  │
+                                │  │  (classifica intenção e delega) │  │
+                                │  └──────┬──────────┬───────────────┘  │
                                 │         │          │          │       │
-                                │    ┌────▼──┐  ┌───▼──┐  ┌───▼───┐  │
-                                │    │Técnico│  │Finan.│  │Vendas │  │
-                                │    └───┬───┘  └──┬───┘  └───┬───┘  │
-                                │        │         │           │       │
-                                │   ┌────▼─────────▼───────────▼────┐  │
-                                │   │           Tools                │  │
-                                │   │  pedidos | faturas | catálogo  │  │
-                                │   │           + RAG                │  │
-                                │   └──────────────┬────────────────┘  │
-                                └──────────────────┼───────────────────┘
+                                │    ┌────▼──┐  ┌───▼──┐  ┌───▼───┐     │
+                                │    │Técnico│  │Finan.│  │Vendas │     │
+                                │    └───┬───┘  └──┬───┘  └───┬───┘     │
+                                │        │         │           │        │
+                                │   ┌────▼─────────▼───────────▼────┐   │
+                                │   │           Tools               │   │
+                                │   │  pedidos | faturas | catálogo │   │
+                                │   │           + RAG               │   │
+                                │   └──────────────┬────────────────┘   │
+                                └──────────────────┼────────────────────┘
                                                    │
                                     ┌──────────────▼──────────────┐
-                                    │      PostgreSQL + pgvector   │
-                                    │   tabelas + embeddings RAG   │
+                                    │      PostgreSQL + pgvector  │
+                                    │   tabelas + embeddings RAG  │
                                     └─────────────────────────────┘
                                     ┌─────────────────────────────┐
-                                    │           Redis              │
-                                    │     sessões + histórico      │
+                                    │           Redis             │
+                                    │     sessões + histórico     │
                                     └─────────────────────────────┘
 ```
 
