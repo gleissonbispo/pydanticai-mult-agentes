@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # 1. Observabilidade primeiro — assim captura tudo que vem a seguir
+    # 1. Observabilidade primeiro
     setup_logfire(app)
 
     # 2. Cria tabelas se não existirem (safety net para dev sem Docker)
@@ -42,7 +42,6 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# A5 FIX: CORS necessário para o frontend Streamlit chamar o backend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

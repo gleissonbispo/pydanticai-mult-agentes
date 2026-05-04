@@ -99,7 +99,6 @@ async def chat_websocket(websocket: WebSocket, cliente_id: str):
                         sessao_id=sessao_id,
                     )
 
-                    # F3: busca histórico e monta prompt com contexto
                     historico = await session_service.get_historico(sessao_id)
                     prompt = _montar_prompt_com_historico(msg.texto, historico)
 
@@ -114,7 +113,6 @@ async def chat_websocket(websocket: WebSocket, cliente_id: str):
                         resposta_agente=final.mensagem,
                     )
 
-                    # F4: streaming progressivo palavra a palavra
                     await _enviar_streaming(websocket, final.mensagem)
 
                     await websocket.send_json({

@@ -1,6 +1,6 @@
 import re
 
-# Padrões comuns de prompt injection — atualizar conforme novos vetores surgirem
+# Padrões comuns de prompt injection
 _PADROES_INJECAO = re.compile(
     r"ignore\s.{0,20}(previous|all|above|your)\s+instructions"
     r"|system\s+prompt"

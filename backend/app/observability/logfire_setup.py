@@ -25,9 +25,6 @@ def setup_logfire(app=None) -> None:
         environment=settings.app_env,
     )
 
-    # instrument_pydantic() removido: captura TODOS os modelos Pydantic, incluindo
-    # os internos do SDK OpenAI (_ChatCompletion, nullable...), gerando ruído excessivo
-    # nos logs. O PydanticAI já instrumenta as chamadas ao LLM via sua própria integração.
     logfire.instrument_sqlalchemy()
     logfire.instrument_redis()
     if app is not None:

@@ -289,16 +289,9 @@ pydanticai-mult-agentes/
 
 ## Decisões Técnicas e Trade-offs
 
-### Por que PydanticAI e não LangChain?
+### Por que PydanticAI?
 
-LangChain tem um ecossistema enorme mas abstrações pesadas. Para um sistema
-onde o output dos agentes precisa ser estruturado e tipado (o `RespostaAgente`
-com `sentimento_cliente`, `precisa_escalar_humano` etc.), o PydanticAI é mais
-direto: você define um schema Pydantic como `output_type` e o framework cuida
-do parsing e retry se o LLM retornar formato inválido.
-
-Trade-off: PydanticAI tem menos integrações prontas que LangChain. Para casos
-com muitas integrações externas, LangChain seria melhor.
+Neste momento o PydanticAI é o objeto de estudo!
 
 ### Por que pgvector e não Pinecone/Weaviate?
 
@@ -342,30 +335,6 @@ apenas às tools relevantes. Isso oferece:
 Trade-off: duas chamadas ao LLM por mensagem (orquestrador + especialista)
 aumenta latência e custo. Para casos simples, um único agente seria mais
 eficiente.
-
----
-
-## Próximos Passos
-
-- [ ] **Autenticação JWT**: implementar login e validação de token no WebSocket
-- [ ] **Histórico via `message_history`**: passar o histórico como parâmetro nativo
-  do PydanticAI (`agent.run(..., message_history=[...])`) em vez de prepend no prompt
-- [ ] **Alembic**: substituir `create_all` por migrações incrementais
-- [ ] **Testes de integração**: testes que sobem PostgreSQL/Redis reais (via
-  pytest-docker) e verificam o fluxo completo
-- [ ] **Rate limiting**: limite de mensagens por cliente/sessão
-- [ ] **Streaming real de tokens**: usar `agent.run_stream()` do PydanticAI para
-  enviar tokens conforme o LLM gera (não a resposta completa de uma vez)
-
----
-
-## Contato
-
-**Gleisson Bispo**
-
-- Email: gleisson.bispo@outlook.com
-- LinkedIn: [linkedin.com/in/gleissonbispo](https://linkedin.com/in/gleissonbispo)
-- GitHub: [github.com/gleissonbispo](https://github.com/gleissonbispo)
 
 ---
 

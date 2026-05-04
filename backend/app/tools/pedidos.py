@@ -13,7 +13,7 @@ async def buscar_pedido_por_id(
     """Busca um pedido garantindo que pertence ao cliente."""
     stmt = select(PedidoDB).where(
         PedidoDB.id == pedido_id,
-        PedidoDB.cliente_id == cliente_id,  # CRÍTICO: filtro de tenant
+        PedidoDB.cliente_id == cliente_id,
     )
     result = await db.execute(stmt)
     pedido_db = result.scalar_one_or_none()

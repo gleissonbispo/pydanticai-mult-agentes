@@ -4,8 +4,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.db import ArtigoConhecimento
 from app.rag.embeddings import gerar_embedding
 
-# cosine_distance: 0 = idêntico, 2 = oposto
-# Artigos com distância >= threshold são considerados fora do assunto
 _DISTANCE_THRESHOLD = 0.70
 
 
