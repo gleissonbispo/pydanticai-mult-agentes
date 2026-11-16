@@ -1,3 +1,5 @@
+![Atendimento com múltiplos agentes de IA em PydanticAI](docs/capa.png)
+
 # Atendimento Multi-Agente com PydanticAI
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
@@ -342,6 +344,24 @@ apenas às tools relevantes. Isso oferece:
 Trade-off: duas chamadas ao LLM por mensagem (orquestrador + especialista)
 aumenta latência e custo. Para casos simples, um único agente seria mais
 eficiente.
+
+---
+
+## Limitações
+
+- Não há autenticação. O `cliente_id` vai na URL do WebSocket e é só validado quanto ao formato; quem informar o ID de outro cliente vê os dados dele. O `JWT_SECRET` existe na configuração, mas ainda não é usado nas rotas.
+- O guardrail contra prompt injection é uma lista de expressões regulares. Barra as tentativas mais conhecidas e não substitui um classificador.
+- LLM e embeddings dependem da API da OpenAI (`gpt-4o-mini` e `text-embedding-3-small`). Os dados das conversas saem do ambiente local.
+- Cada mensagem custa duas chamadas ao LLM (orquestrador e especialista).
+- A suíte tem 3 testes. Não há avaliação automatizada da qualidade do roteamento nem das respostas.
+- Os dados são fictícios, gerados por `scripts/seed_data.py`.
+
+## Próximos passos
+
+- Autenticação com JWT e `cliente_id` derivado do token.
+- Conjunto de avaliação para o orquestrador (mensagem e intenção esperada) rodando em CI.
+- Suporte a modelo local via Ollama, para cenários em que o dado não pode sair da rede.
+- Fila de atendimento humano para os casos marcados com `precisa_escalar_humano`.
 
 ---
 
