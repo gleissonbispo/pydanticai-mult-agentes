@@ -363,6 +363,16 @@ eficiente.
 - Suporte a modelo local via Ollama, para cenários em que o dado não pode sair da rede.
 - Fila de atendimento humano para os casos marcados com `precisa_escalar_humano`.
 
+## Autor
+
+**Gleisson Bispo**, Gerente de People Analytics. Escrevo sobre dados de pessoas, Data Science e IA aplicada a RH.
+
+- Site: [gleissonbispo.com.br](https://gleissonbispo.com.br) (projetos, artigos, radar de notícias e vagas de People Analytics)
+- Este projeto no site: [gleissonbispo.com.br/projetos/pydanticai-multi-agentes](https://gleissonbispo.com.br/projetos/pydanticai-multi-agentes)
+- LinkedIn: [linkedin.com/in/gleissonbispo](https://www.linkedin.com/in/gleissonbispo)
+- Newsletter: [People Analytics LAB](https://www.linkedin.com/newsletters/people-analytics-lab-7423156507271368704), no LinkedIn
+- GitHub: [@gleissonbispo](https://github.com/gleissonbispo)
+
 ---
 
 *Projeto construído para portfólio e aprendizado pessoal em sistemas de IA com Python.*
